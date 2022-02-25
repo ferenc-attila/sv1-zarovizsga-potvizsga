@@ -13,7 +13,7 @@ public class PeopleDao {
     }
 
     public String findIpByName(String firstName, String lastName) {
-        return jdbcTemplate.queryForObject("SELECT first_name, last_name, ip_address FROM people WHERE first_name = ? AND last_name = ?",
-                (rs, rowNum) -> rs.getString("ip_address"), firstName, lastName);
+        return jdbcTemplate.queryForObject("SELECT ip_address FROM people WHERE first_name = ? AND last_name = ?",
+                String.class, firstName, lastName);
     }
 }
